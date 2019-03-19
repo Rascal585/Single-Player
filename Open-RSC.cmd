@@ -223,12 +223,10 @@ taskkill /F /IM Java*
 taskkill /F /IM mysqld*
 
 REM Fetches the most recent release version
-cls
 echo:
 call Required\curl -sL https://gitlab.openrsc.com/api/v4/projects/open-rsc%2Fsingle-player/releases | Required\grep "tag_name" | Required\egrep -o (ORSC-).[0-9].[0-9].[0-9] | Required\head -1 > version.txt
 set /P version=<version.txt
 echo %version%
-
 
 REM Downloads the most recent release archive and copies the contents into "Single-Player"
 cd ..
