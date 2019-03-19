@@ -233,7 +233,7 @@ echo %version%
 REM Downloads the most recent release archive and copies the contents into "Single-Player"
 cd ..
 call Single-Player\Required\wget https://gitlab.openrsc.com/open-rsc/Single-Player/-/archive/%version%/Single-Player-%version%.zip
-call Single-Player\Required\7za.exe x %version%.zip -aoa
+call Single-Player\Required\7za.exe x Single-Player-%version%.zip -aoa
 cd Single-Player-%version%
 call xcopy "*.*" "../Single-Player\" /K /D /H /Y
 
