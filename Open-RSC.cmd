@@ -225,7 +225,7 @@ taskkill /F /IM mysqld*
 REM Fetches the most recent release version
 cls
 echo:
-call Required\curl -sL https://api.github.com/repos/open-rsc/single-player/releases/latest | Required\grep "tag_name" | Required\egrep -o (ORSC-).[0-9].[0-9].[0-9] > version.txt
+call Required\curl -sL https://gitlab.openrsc.com/api/v4/projects/open-rsc%2Fsingle-player/releases | Required\grep "tag_name" | Required\egrep -o (ORSC-).[0-9].[0-9].[0-9] | head -1 > version.txt
 set /P version=<version.txt
 
 
