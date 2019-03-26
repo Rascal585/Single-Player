@@ -18,8 +18,7 @@ echo   %RED%2%NC% - Rank a player
 echo   %RED%3%NC% - Backup database
 echo   %RED%4%NC% - Restore database
 echo   %RED%5%NC% - Reset entire database
-echo   %RED%6%NC% - Upgrade to latest version
-echo   %RED%7%NC% - Exit
+echo   %RED%6%NC% - Exit
 echo:
 SET /P action=Please enter a number choice from above:
 echo:
@@ -29,8 +28,7 @@ if /i "%action%"=="2" goto rank
 if /i "%action%"=="3" goto backup
 if /i "%action%"=="4" goto import
 if /i "%action%"=="5" goto reset
-if /i "%action%"=="6" goto upgrade
-if /i "%action%"=="7" goto exit
+if /i "%action%"=="6" goto exit
 
 echo Error! %action% is not a valid option. Press enter to try again.
 echo:
