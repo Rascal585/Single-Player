@@ -1,6 +1,6 @@
 Landscape.orsc=072c9df884d858166478ce2ea8771845
 #MD5CHECKSUM=d41d8cd98f00b204e9800998ecf8427e
-Open_RSC_Client.jar=ef902763f9dbbce432342aab1a137cbe
+Open_RSC_Client.jar=ff0afb193e3e58d1f7f7c73c74a781c8
 Sprites.orsc=fd0c3ec6d03587c4cae21804513f5af6
 advance.wav=8f3b3864c52cf51814fdf0fa0b2b741b
 anvil.wav=5eca4d35fc8ee3ea435560da0eca6c6d
@@ -41,6 +41,6 @@ sounds.mem=9c48528aa1856071bddd96f1ccf0280d
 spellfail.wav=e7db55346a3c9e1e2dc4156a5080e3e3
 spellok.wav=e975b69136d8cea9eafd1f7dad2f6e92
 takeobject.wav=bbe470bcd82a2e2dc605760d7d0ffaa5
-uid.dat=61de145d0c29d0188d35fce2356babc0
+uid.dat=d41d8cd98f00b204e9800998ecf8427e
 underattack.wav=e2721d63e3df7b55e081ee71c66e56c3
 victory.wav=6fabaf1726a553115835427a7f3ae269

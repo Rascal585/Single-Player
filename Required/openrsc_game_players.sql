@@ -8,9 +8,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE DATABASE IF NOT EXISTS `openrsc_game` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `openrsc_game`;
-
 DROP TABLE IF EXISTS `openrsc_achievements`;
 CREATE TABLE IF NOT EXISTS `openrsc_achievements` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -271,7 +268,7 @@ DROP TABLE IF EXISTS `openrsc_logins`;
 CREATE TABLE IF NOT EXISTS `openrsc_logins` (
   `playerID` int(10) UNSIGNED NOT NULL,
   `time` int(5) UNSIGNED NOT NULL,
-  `ip` varchar(15) NOT NULL DEFAULT '0.0.0.0',
+  `ip` varchar(255) NOT NULL DEFAULT '0.0.0.0',
   `dbid` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`dbid`),
   KEY `ip` (`ip`)
@@ -340,9 +337,9 @@ CREATE TABLE IF NOT EXISTS `openrsc_players` (
   `skulled` int(10) UNSIGNED DEFAULT 0,
   `charged` int(10) UNSIGNED DEFAULT 0,
   `creation_date` int(10) UNSIGNED NOT NULL DEFAULT 0,
-  `creation_ip` varchar(15) NOT NULL DEFAULT '0.0.0.0',
+  `creation_ip` varchar(255) NOT NULL DEFAULT '0.0.0.0',
   `login_date` int(10) UNSIGNED DEFAULT 0,
-  `login_ip` varchar(15) DEFAULT '0.0.0.0',
+  `login_ip` varchar(255) DEFAULT '0.0.0.0',
   `banned` varchar(255) NOT NULL DEFAULT '0',
   `offences` int(11) NOT NULL DEFAULT 0,
   `muted` varchar(255) NOT NULL DEFAULT '0',
@@ -364,12 +361,30 @@ CREATE TABLE IF NOT EXISTS `openrsc_players` (
   KEY `banned` (`banned`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `openrsc_player_recovery`;
+CREATE TABLE IF NOT EXISTS `openrsc_player_recovery` (
+  `playerID` int(10) UNSIGNED NOT NULL,
+  `username` varchar(12) NOT NULL DEFAULT '',
+  `salt` varchar(250) NOT NULL DEFAULT '',
+  `question1` varchar(256) NOT NULL DEFAULT '',
+  `answer1` varchar(512) NOT NULL DEFAULT '',
+  `question2` varchar(256) NOT NULL DEFAULT '',
+  `answer2` varchar(512) NOT NULL DEFAULT '',
+  `question3` varchar(256) NOT NULL DEFAULT '',
+  `answer3` varchar(512) NOT NULL DEFAULT '',
+  `question4` varchar(256) NOT NULL DEFAULT '',
+  `answer4` varchar(512) NOT NULL DEFAULT '',
+  `question5` varchar(256) NOT NULL DEFAULT '',
+  `answer5` varchar(512) NOT NULL DEFAULT '',
+  PRIMARY KEY (`playerID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `openrsc_player_cache`;
 CREATE TABLE IF NOT EXISTS `openrsc_player_cache` (
   `playerID` int(10) UNSIGNED NOT NULL,
   `type` tinyint(1) NOT NULL,
   `key` varchar(32) NOT NULL,
-  `value` varchar(13) NOT NULL,
+  `value` varchar(150) NOT NULL,
   `dbid` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`dbid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

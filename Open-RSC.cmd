@@ -92,7 +92,7 @@ SET /P username=""
 call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc_game -e "USE openrsc_game; UPDATE `openrsc_players` SET `group_id` = '1' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '1' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made an admin!
 echo:
@@ -108,7 +108,7 @@ SET /P username=""
 call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc_game -e "USE openrsc_game; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made a mod!
 echo:
@@ -124,7 +124,7 @@ SET /P username=""
 call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc_game -e "USE openrsc_game; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made a regular player!
 echo:
@@ -145,7 +145,7 @@ echo What do you want to name your player database backup? (Avoid spaces and sym
 echo:
 SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
-call START "" %mariadbpath%mysqldump.exe -uroot -proot --database openrsc_game --result-file="%filename%.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot -proot --database openrsc --result-file="%filename%.sql"
 echo:
 echo Player database backup complete.
 echo:
@@ -168,7 +168,7 @@ echo Which player database listed above do you wish to restore?
 echo:
 SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
-call %mariadbpath%mysql.exe -uroot -proot < %filename%
+call %mariadbpath%mysql.exe -uroot -proot openrsc < %filename%
 echo:
 echo Player database restore complete.
 echo:
@@ -204,8 +204,8 @@ echo:
 call START "" %mariadbpath%mysqld.exe --console
 echo Database wipe will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot < Required\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot < Required\openrsc_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc < Required\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc < Required\openrsc_game_players.sql
 echo:
 echo The player database has been reset!
 echo:
