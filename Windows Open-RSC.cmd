@@ -3,7 +3,6 @@
 
 :# Variable paths:
 SET required="Required\"
-SET mariadbpath="Required\mariadb10.3.8\bin\"
 
 :<------------Begin Start------------>
 REM Initial menu displayed to the user
@@ -33,7 +32,6 @@ goto start
 :exit
 REM Shuts down existing processes
 taskkill /F /IM Java*
-taskkill /F /IM mysqld*
 exit
 :<------------End Exit------------>
 
