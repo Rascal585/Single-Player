@@ -1,1 +1,0 @@
-.\mariadb10.3.8\bin\mysqld.exe --console
