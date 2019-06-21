@@ -12,3 +12,5 @@ Required/Cache/credentials\.txt
 Required/Cache/hideIp\.txt
 
 version\.txt
+
+._*
