@@ -2,7 +2,7 @@
 
 # Table of contents <a name="top"></a>
 1. [Project Information](#general)
-2. [How to Run](#run)
+2. [How to Run Single Player Open RSC](#run)
 3. [Default Credentials](#credentials)
 4. [Minimum Requirements](#requirements)
 5. [Bug Reports, Discord, and Reddit](#bugs)
@@ -16,26 +16,30 @@ The first priority of our development is ensuring the authentic content found in
 <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/CONTRIBUTING.md">Contributing guide</a>
 
 
-## How to Run<a name="run"></a>
+## How to Run Single Player Open RSC<a name="run"></a>
 
-1. <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/tags">Download the latest release "Download zip"</a>
+1. #### <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/tags">Download the latest release</a>
 
-2. Unzip the downloaded file.
+2. Unzip the file
 
-3. Open the "Single-Player" folder and double click on "Windows Open-RSC.cmd"
+3. Open the "Single-Player" folder and double click on "Windows Open-RSC.cmd" or "MacOS Open-RSC.sh" (depending on your operating system)
 
-4. Allow MariaDB and Java if prompted by Windows Firewall.
+4. Allow MariaDB and Java permission if prompted by Windows Firewall
+
+5. For an in-depth getting started guide, check out:
+
+####<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Windows%20Getting%20Started%20Guide.txt">Windows Getting Started Guide</a> | <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.txt">MacOS Getting Started Guide</a>
 
 [Return to top](#top)
 
 
 ## Minimum Requirements<a name="requirements"></a>
 
-* Windows 7 or Windows 10
+* Windows 10 or MacOS
 
 * 2GB RAM
 
-* Latest version of Java (preferrably OpenJDK! <a href="https://adoptopenjdk.net/releases.html?variant=openjdk12&jvmVariant=hotspot#x64_win">Download here!</a>)
+* Latest version of Java (preferably OpenJDK - <a href="https://adoptopenjdk.net/releases.html?variant=openjdk12&jvmVariant=hotspot#x64_win">download here!</a>)
 
 [Return to top](#top)
 
@@ -43,11 +47,11 @@ The first priority of our development is ensuring the authentic content found in
 ## Bug Reports, Discord, and Reddit<a name="bugs"></a>
 Feel free to submit bug reports in the repository issues section! If you would like to chat with developers and players, join our Discord server!
 
-<a href="https://discordapp.com/invite/94vVKND">Discord</a>
+#### <a href="https://discordapp.com/invite/94vVKND">Discord</a>
 
-<a href="https://www.reddit.com/r/openrsc">Reddit</a>
+#### <a href="https://www.reddit.com/r/openrsc">Reddit</a>
 
-<a href="https://openrsc.com">OpenRSC Website</a>
+#### <a href="https://openrsc.com">OpenRSC Website</a>
 
 
 ## Enable high DPI Scaling For High Res Monitors<a name="dpi"></a>
