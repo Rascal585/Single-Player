@@ -2,7 +2,7 @@ Guide for running Open RSC Single Player on Windows:
 
 --Step 1---------------------------------------------------------------
 
-Next, download Open JDK 12 for Windows (MSI installer version) and if you already have Java installed (ex: Oracle Java 8), then it is highly suggested that you first uninstall it. Oracle will not be supporting non-enterprise Java much longer and Open JDK is the future.
+First, download Open JDK 12 for Windows (MSI installer version) and if you already have Java installed (ex: Oracle Java 8), then it is highly suggested that you first uninstall it. Oracle will not be supporting non-enterprise Java much longer and Open JDK is the future.
 https://cdn.azul.com/zulu/bin/zulu12.2.3-ca-jdk12.0.1-win_x64.msi
 
 For the latest version of Open JDK: (pick the MSI installer version!)
