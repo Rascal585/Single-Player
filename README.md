@@ -5,26 +5,26 @@
 2. [How to Run](#run)
 3. [Default Credentials](#credentials)
 4. [Minimum Requirements](#requirements)
-5. [Bug Reports, Discord, Reddit, and Twitter](#bugs)
+5. [Bug Reports, Discord, and Reddit](#bugs)
 6. [Enable High DPI Scaling For High Res Monitors](#dpi)
 
 ## Project Information<a name="general"></a>
-The first priority of our development is ensuring the authentic content found in the original Runescape Classic game is replicated to its full extent. We are in no way associated or affiliated with JaGex, Runescape Classic, or any other similar companies or products. Our goal is to program and play Runescape Classic, and have fun doing it!
+The first priority of our development is ensuring the authentic content found in the original Runescape Classic game is replicated to its full extent. We are in no way associated or affiliated with JaGex, Runescape Classic, or any other similar companies or products. Our goal is to program and play an old abandonware game, Runescape Classic, and have fun doing it!
 
-<a href="https://github.com/Open-RSC/Game/blob/2.0.0/CODE_OF_CONDUCT.md">Code of conduct</a>
+<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/CODE_OF_CONDUCT.md">Code of conduct</a>
 
-<a href="https://github.com/Open-RSC/Game/blob/2.0.0/CONTRIBUTING.md">Contributing guide</a>
+<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/CONTRIBUTING.md">Contributing guide</a>
 
 
 ## How to Run<a name="run"></a>
 
-1. <a href="https://github.com/Open-RSC/Single-Player/releases">Download the latest release "Source code (zip)"</a>
+1. <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/tags">Download the latest release "Download zip"</a>
 
-2. Unzip the downloaded.
+2. Unzip the downloaded file.
 
-3. !Important! Rename the folder to "Single-Player" if it is named something else after being extracted from the zip file. This is required for upgrading to new versions to work!
+3. Open the "Single-Player" folder and double click on "Windows Open-RSC.cmd"
 
-4. Open the "Single-Player" folder and double click on "Open-RSC.cmd"
+4. Allow MariaDB and Java if prompted by Windows Firewall.
 
 [Return to top](#top)
 
@@ -35,19 +35,17 @@ The first priority of our development is ensuring the authentic content found in
 
 * 2GB RAM
 
-* Latest version of Java
+* Latest version of Java (preferrably OpenJDK! <a href="https://adoptopenjdk.net/releases.html?variant=openjdk12&jvmVariant=hotspot#x64_win">Download here!</a>)
 
 [Return to top](#top)
 
 
-## Bug Reports, Discord, Reddit, and Twitter<a name="bugs"></a>
+## Bug Reports, Discord, and Reddit<a name="bugs"></a>
 Feel free to submit bug reports in the repository issues section! If you would like to chat with developers and players, join our Discord server!
 
 <a href="https://discordapp.com/invite/94vVKND">Discord</a>
 
 <a href="https://www.reddit.com/r/openrsc">Reddit</a>
-
-<a href="https://twitter.com/openrsc">Twitter</a>
 
 <a href="https://openrsc.com">OpenRSC Website</a>
 
