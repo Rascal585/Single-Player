@@ -140,11 +140,15 @@ taskkill /F /IM Java*
 REM Performs a full database export
 cls
 echo:
-echo What do you want to name your player database backup? (Avoid spaces and symbols for the filename)
+echo What do you want to name your player database backup? (Avoid spaces and symbols for the filename or it will not save correctly)
 echo:
 SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
-call START "" %mariadbpath%mysqldump.exe -uroot -proot --database openrsc --result-file="%filename%.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot -proot --database preservation --result-file="Backups/%filename%-RSC-Preservation.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot -proot --database openrsc --result-file="Backups/%filename%-OpenRSC.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot -proot --database cabbage --result-file="Backups/%filename%-RSC-Cabbage.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot -proot --database openpk --result-file="Backups/%filename%-Open-PK.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot -proot --database wk --result-file="Backups/%filename%-Wolf-Kingdom.sql"
 echo:
 echo Player database backup complete.
 echo:
@@ -163,11 +167,15 @@ REM Performs a full database import
 echo:
 dir /B *.sql
 echo:
-echo Which player database listed above do you wish to restore?
+echo Which player database listed above do you wish to restore? (Just specify the part of the name before the -****.sql part, ex: "mybackup" instead of "mybackup-RSC-Cabbage.sql")
 echo:
 SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
-call %mariadbpath%mysql.exe -uroot -proot openrsc < %filename%
+call %mariadbpath%mysql.exe -uroot -proot preservation < "Backups/%filename%-RSC-Preservation.sql"
+call %mariadbpath%mysql.exe -uroot -proot openrsc < "Backups/%filename%-OpenRSC.sql"
+call %mariadbpath%mysql.exe -uroot -proot cabbage < "Backups/%filename%-RSC-Cabbage.sql"
+call %mariadbpath%mysql.exe -uroot -proot openpk < "Backups/%filename%-Open-PK.sql"
+call %mariadbpath%mysql.exe -uroot -proot openrsc < "Backups/%filename%-Wolf-Kingdom.sql"
 echo:
 echo Player database restore complete.
 echo:
@@ -184,7 +192,7 @@ taskkill /F /IM Java*
 REM Verifies the user wishes to clear existing player data
 cls
 echo:
-echo Are you ABSOLUTELY SURE that you want to reset the player database?
+echo Are you ABSOLUTELY SURE that you want to reset all game databases?
 echo:
 echo To confirm the database reset, type yes and press enter.
 echo:
@@ -204,10 +212,22 @@ call START "" %mariadbpath%mysqld.exe --console
 echo Database wipe will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE openrsc;"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE cabbage;"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE openpk;"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE preservation;"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE wk;"
 call %mariadbpath%mysql.exe -uroot -proot openrsc -D openrsc < Required\openrsc_game_server.sql
 call %mariadbpath%mysql.exe -uroot -proot openrsc -D openrsc < Required\openrsc_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D cabbage < Required\cabbage_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D cabbage < Required\cabbage_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D openpk < Required\openpk_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D openpk < Required\openpk_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D preservation < Required\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D preservation < Required\openrsc_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D wk < Required\wk_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D wk < Required\wk_game_players.sql
 echo:
-echo The player database has been reset!
+echo The databases have all been reset to the original versions!
 echo:
 pause
 goto start
