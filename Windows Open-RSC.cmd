@@ -3,6 +3,7 @@
 
 :# Variable paths:
 SET required="Required\"
+SET mariadbpath="Required\mariadb10.3.8\bin\"
 
 :<------------Begin Start------------>
 REM Initial menu displayed to the user
@@ -202,8 +203,9 @@ echo:
 call START "" %mariadbpath%mysqld.exe --console
 echo Database wipe will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot openrsc < Required\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc < Required\openrsc_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE openrsc;"
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D openrsc < Required\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc -D openrsc < Required\openrsc_game_players.sql
 echo:
 echo The player database has been reset!
 echo:
@@ -242,7 +244,7 @@ cd Single-Player
 call START "" %mariadbpath%mysqld.exe --console
 echo Database wipe will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot < Required\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc < Required\openrsc_game_server.sql
 echo:
 echo Upgrade complete.
 echo:
