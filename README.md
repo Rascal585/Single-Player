@@ -28,7 +28,7 @@ The first priority of our development is ensuring the authentic content found in
 
 5. For an in-depth getting started guide, check out:
 
-####<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Windows%20Getting%20Started%20Guide.txt">Windows Getting Started Guide</a> | <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.txt">MacOS Getting Started Guide</a>
+<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Windows%20Getting%20Started%20Guide.txt">Windows Getting Started Guide</a> | <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.txt">MacOS Getting Started Guide</a>
 
 [Return to top](#top)
 
