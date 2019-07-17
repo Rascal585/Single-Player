@@ -91,7 +91,7 @@ SET /P username=""
 call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '1' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made an admin!
 echo:
