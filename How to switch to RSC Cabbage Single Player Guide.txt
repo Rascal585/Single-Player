@@ -1,0 +1,11 @@
+To play RSC Cabbage in single player or one of the other preset server configs:
+
+- Open "Required/server" and make a copy of the desired .conf file, naming it "local.conf" as this will override whatever is in "default.conf"
+
+- Next, edit "local.conf" as desired. You can open "default.conf" to see documentation for each of the feature configurations. It is recommended that you do not edit "default.conf" in the event something breaks.
+
+- All server preset configs have been updated so that they use the same port: "<entry key = "server_port">43594</entry>". This was done to save some of the headache with having to edit "port.txt" inside the "Required/Cache" folder to work with it.
+
+- Be aware that databases used for Open RSC and RSC Cabbage are different. Due to the structure changes, the server will crash if you do not use the correct database. If you switch configs, most of the custom features will only work if enabled and using the RSC Cabbage database. Players saved on other databases won't be able to be logged in to.
+
+- After implementing the "local.conf" confif file in "Required/server", you will have to fully exit any running instances of Open RSC and re-launch them. If something goes wrong, just delete "local.conf" and it will revert to the "default.conf" version.
