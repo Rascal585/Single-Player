@@ -92,6 +92,9 @@ call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openpk; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made an admin!
 echo:
@@ -108,6 +111,9 @@ call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openpk; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made a mod!
 echo:
@@ -124,6 +130,9 @@ call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openpk; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made a regular player!
 echo:
@@ -216,16 +225,16 @@ call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE cabbage
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE openpk;"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE preservation;"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE wk;"
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D openrsc < Required\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D openrsc < Required\openrsc_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D cabbage < Required\cabbage_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D cabbage < Required\cabbage_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D openpk < Required\openpk_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D openpk < Required\openpk_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D preservation < Required\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D preservation < Required\openrsc_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D wk < Required\wk_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc -D wk < Required\wk_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc < Required\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc < Required\openrsc_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot cabbage < Required\cabbage_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot cabbage < Required\cabbage_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot openpk < Required\openpk_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openpk < Required\openpk_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Required\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Required\openrsc_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot wk < Required\wk_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot wk < Required\wk_game_players.sql
 echo:
 echo The databases have all been reset to the original versions!
 echo:

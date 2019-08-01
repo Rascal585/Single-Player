@@ -17,3 +17,5 @@ version\.txt
 Backups/*\.sql
 
 Required/Cache/config\.txt
+
+*.png

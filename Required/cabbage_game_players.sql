@@ -79,6 +79,14 @@ CREATE TABLE IF NOT EXISTS `openrsc_bank` (
   PRIMARY KEY (`dbid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `openrsc_bankpresets`;
+CREATE TABLE IF NOT EXISTS `openrsc_bankpresets` (
+  `playerID` int(10) unsigned NOT NULL,
+  `slot` int(10) unsigned NOT NULL,
+  `inventory` blob DEFAULT NULL,
+  `equipment` blob DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `openrsc_chat_logs`;
 CREATE TABLE IF NOT EXISTS `openrsc_chat_logs` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -139,6 +147,7 @@ CREATE TABLE IF NOT EXISTS `openrsc_curstats` (
   `cur_herblaw` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
   `cur_agility` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
   `cur_thieving` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
+  `cur_runecraft` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   KEY `playerID` (`playerID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -176,6 +185,7 @@ CREATE TABLE IF NOT EXISTS `openrsc_experience` (
   `exp_herblaw` int(9) UNSIGNED NOT NULL DEFAULT 0,
   `exp_agility` int(9) UNSIGNED NOT NULL DEFAULT 0,
   `exp_thieving` int(9) UNSIGNED NOT NULL DEFAULT 0,
+  `exp_runecraft` int(9) UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `playerID` (`playerID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -251,6 +261,15 @@ CREATE TABLE IF NOT EXISTS `openrsc_invitems` (
   `amount` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `wielded` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
   `slot` int(5) UNSIGNED NOT NULL,
+  `dbid` int(10) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`dbid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `openrsc_equipped`;
+CREATE TABLE IF NOT EXISTS `openrsc_equipped` (
+  `playerID` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
+  `amount` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `dbid` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`dbid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
