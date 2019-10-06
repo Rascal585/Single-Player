@@ -10,11 +10,7 @@
 7. [In-Game Commands](#commands)
 
 ## Project Information<a name="general"></a>
-The first priority of our development is ensuring the authentic content found in the original Runescape Classic game is replicated to its full extent. We are in no way associated or affiliated with JaGex, Runescape Classic, or any other similar companies or products. Our goal is to program and play an old abandonware game, Runescape Classic, and have fun doing it!
-
-<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/CODE_OF_CONDUCT.md">Code of conduct</a>
-
-<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/CONTRIBUTING.md">Contributing guide</a>
+Runescape Classic was shut down and abandoned after 17 years on August 6th, 2018. Through open source black box reverse engineering, we have brought back Runescape Classic (RSC) so that it may be enjoyed by countless fans once again. In this repository is everything needed to run the closest to original version of Runescape Classic available. There are still issues to address but efforts are continually on-going to fix them. This project has been built upon the efforts of the Runescape Classic private server developer community spanning from 2008 to 2018. From the inception of the Open RSC project in June 2018, the team has reviewed thousands of hours of RSC+ replays to ensure an accurate and authentic in-game experience. We have rewritten the core server framework and expanded it to scale far beyond the original abilities of the original Runescape Classic game. Included are several server configurations that allow many new game features to be activated without needing to change any code. Example: Runecrafting, running, custom sprites, faster game speeds, higher experience rates, new quests, auction house, clans, parties, pets, and so much more. We primarily use Discord to stay in touch and welcome anyone that would like to learn and help contribute code to the project. We host free to play public worlds as well - see our website for more information. One last thing: we do not accept any monetary donations whatsoever. This is a hobby and will only ever be a hobby. We don't believe anyone should profit using somebody else's work, even if it is considered abandonware.
 
 
 ## How to Run Single Player Open RSC<a name="run"></a>
@@ -23,7 +19,7 @@ The first priority of our development is ensuring the authentic content found in
 
 2. Unzip the file
 
-3. Open the "Single-Player" folder and double click on "Windows Open-RSC.cmd" or "MacOS Open-RSC.sh" (depending on your operating system)
+3. Open the "Single-Player" folder and double click on "Windows Open-RSC.cmd"
 
 4. Allow MariaDB and Java permission if prompted by Windows Firewall
 
@@ -31,55 +27,36 @@ The first priority of our development is ensuring the authentic content found in
 
 <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Windows%20Getting%20Started%20Guide.txt">Windows Getting Started Guide</a> | <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.txt">MacOS Getting Started Guide</a>
 
+This works in Linux and on Mac but has not been scripted out with a portable MariaDB SQL database server at this time. Join our Discord if you need help.
+
 [Return to top](#top)
 
 
 ## Minimum Requirements<a name="requirements"></a>
 
-* Windows 10 or MacOS
+* Windows XP, MacOS, or Linux
 
-* 2GB RAM
+* 2GB RAM (in order to run both server and client)
 
-* Latest version of Java (preferably OpenJDK - <a href="https://adoptopenjdk.net/releases.html?variant=openjdk12&jvmVariant=hotspot#x64_win">download here!</a>)
+* Jave 8 (JDK 1.8) or newer (Preferably OpenJDK - <a href="https://adoptopenjdk.net">https://adoptopenjdk.net</a>)
 
 [Return to top](#top)
 
 
 ## Bug Reports, Discord, and Reddit<a name="bugs"></a>
-Feel free to submit bug reports in the repository issues section! If you would like to chat with developers and players, join our Discord server!
+Feel free to submit bug reports in the repository issues section! If you would like to chat with developers and players of this project, join our Discord server!
 
-#### <a href="https://discordapp.com/invite/94vVKND">Discord</a>
+<a href="https://gitlab.openrsc.com/open-rsc/Game/issues">GitLab Issue Submission</a>
 
-#### <a href="https://www.reddit.com/r/openrsc">Reddit</a>
+<a href="https://discordapp.com/invite/94vVKND">Discord</a>
 
-#### <a href="https://openrsc.com">OpenRSC Website</a>
+<a href="https://www.reddit.com/r/openrsc">Reddit</a>
 
-
-## Enable high DPI Scaling For High Res Monitors<a name="dpi"></a>
-
-Note: This requires Java 9 or newer to be installed. Java 8 does not support DPI scaling.
-
-1. Launch the Open RSC game client
-
-2. Open task manager (CTRL + ALT + DEL)
-
-3. Right click the process "Java(TM) Platform SE binary"
-
-4. Click "Open file location"
-
-5. Right click on "javaw.exe" and click "Properties"
-
-6. Click on the "Compatibility" tab
-
-7. Set this: <img src="https://i.imgur.com/5gJqSMr.png"/>
-
-8. Re-launch Open RSC
-
-[Return to top](#top)
+<a href="https://openrsc.com">OpenRSC Website</a>
 
 
 ## In-Game Commands<a name="commands"></a>
 
-#### <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Commands.md">Click here for in-game command documentation.</a>
+#### <a href="https://gitlab.openrsc.com/open-rsc/Game/blob/3.0.0/Commands.md">Click here for in-game command documentation.</a>
 
 [Return to top](#top)
