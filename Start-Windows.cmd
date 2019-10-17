@@ -17,8 +17,9 @@ echo   %RED%1%NC% - Start the game
 echo   %RED%2%NC% - Change a player's in-game role
 echo   %RED%3%NC% - Backup game database
 echo   %RED%4%NC% - Restore game database
-echo   %RED%5%NC% - Reset entire game database
-echo   %RED%6%NC% - Exit
+echo   %RED%5%NC% - Upgrade the database
+echo   %RED%6%NC% - Reset entire game database
+echo   %RED%7%NC% - Exit
 echo:
 SET /P action=Please enter a number choice from above:
 echo:
@@ -27,8 +28,9 @@ if /i "%action%"=="1" goto run
 if /i "%action%"=="2" goto role
 if /i "%action%"=="3" goto backup
 if /i "%action%"=="4" goto import
-if /i "%action%"=="5" goto reset
-if /i "%action%"=="6" goto exit
+if /i "%action%"=="5" goto dbupgrade
+if /i "%action%"=="6" goto reset
+if /i "%action%"=="7" goto exit
 
 echo Error! %action% is not a valid option. Press enter to try again.
 echo:
@@ -191,6 +193,35 @@ echo:
 pause
 goto start
 :<------------End Import------------>
+
+
+:<------------Begin DB Upgrade------------>
+:dbupgrade
+REM Shuts down existing processes
+taskkill /F /IM Java*
+
+cls
+REM Performs a database upgrade
+echo:
+dir /B *.sql
+echo:
+echo Which player database listed above do you wish to upgrade? (Just specify the part of the name before the -****.sql part, ex: "mybackup" instead of "mybackup-RSC-Cabbage.sql")
+echo:
+SET /P filename=""
+call START "" %mariadbpath%mysqld.exe --console
+echo Database upgrade will occur in 5 seconds (gives time to start the database server on slow PCs)
+PING localhost -n 6 >NUL
+call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openpk < Databases\openpk_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot wk < Databases\wk_game_server.sql
+echo:
+echo Player database upgrade complete.
+echo:
+pause
+goto start
+:<------------End DB Upgrade------------>
 
 
 :<------------Begin Reset------------>
