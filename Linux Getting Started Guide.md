@@ -71,7 +71,7 @@ make backup db=openrsc
 
 Download and extract from the .zip the latest Single Player release and copy your database backup export file over to the new location's "Backups" folder. Run the following make command from the new folder location: (updated as needed!)
 ```
-make restore 20191017-0226-EDT-cabbage.zip db=cabbage
+make restore name=20191017-0226-EDT-cabbage.zip db=cabbage
 ```
 Lastly, you will want to use the following make command to ensure the database has been fully upgraded:
 ```
