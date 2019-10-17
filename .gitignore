@@ -19,3 +19,5 @@ Backups/*\.sql
 Required/Cache/config\.txt
 
 *.png
+
+server/logs/gameserver.log

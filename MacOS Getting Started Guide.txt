@@ -33,32 +33,11 @@ Next, copy and paste the following in Terminal and press enter:
 
 --Step 2---------------------------------------------------------------
 
-You are now ready to double click on "MacOS Open-RSC.cmd" which is located in the "Single-Player" folder.
+You are now ready to use "Start-Linux.sh" (Skip the option for Install).
 
-Once open, press 1 and then press enter. This is for the option of "Run Single Player".
-
-A new window will open stating that the game will start up in 10 seconds. When the game client opens, you will need to click "New User" to create a player. If your mouse cursor suddenly becomes locked in place, press the alt key once and then it should be back to normal. The alt key lets you freely move the camera around with the mouse.
-
-If you become stuck on Tutorial Island or just wish to skip it, there is a link in the in-game options menu above the log out that reads "skip tutorial".
-
---Step 3---------------------------------------------------------------
-
-At this point, you may wish to use different game features than the default RSC ones. This requires you to fully exit the game client and the game server (use choice #2 to exit in the command prompt window) to fully shut it down.
+Open Terminal, navigate to this folder, and execute:
 
 
-Now navigate to "Single-Player -> Required -> server" and make a copy of "rsccabbage.conf", renaming the duplicate file "local.conf". Same applies for "openrsc.conf" and the other files in that directory. If "local.conf" exists, the game server will override the settings that are in "default.conf". Think of "openrsc.conf" and "rsccabbage.conf" as ready to go config presets.
+	./Start-Linux.sh
 
 
-If you opt to use different named databases, edit the following line in your "local.conf" (or default.conf) to match the name of your database:
-<entry key = "mysql_db">cabbage</entry>
-
-
-It is strongly suggested that you do not edit "default.conf" and instead make a copy of whatever .conf file, rename it to "local.conf" and edit that instead. That way, you always have working config to fall back on if something doesn't work the way you wish.
-
-Last but not least, always restart the game server after fully exiting it when you have made changes to your "local.conf" in order to have them be applied. An already running server will not read any changes to the file.
-
---Step 4---------------------------------------------------------------
-
-Creating an in-game admin player:
-
-Once you have created a new player and logged out of the game (will not save database update changes otherwise!), you will be able to open PHPMyAdmin (http://localhost/phpmyadmin), navigate to the database of the game you are running (openrsc, cabbage, etc) and click on the "openrsc_players" table. It will list out all of your players here. If you double click on the cell for the desired player under the column for "group_id" and change the "10" to a "0" and press enter, your player will be an admin in-game when you next log in.

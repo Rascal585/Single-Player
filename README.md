@@ -19,7 +19,7 @@ Runescape Classic was shut down and abandoned after 17 years on August 6th, 2018
 
 2. Unzip the file
 
-3. Open the "Single-Player" folder and double click on "Windows Open-RSC.cmd"
+3. Open the "Single-Player" folder and double click on "Start-Windows.cmd"
 
 4. Allow MariaDB and Java permission if prompted by Windows Firewall
 
@@ -38,7 +38,7 @@ This works in Linux and on Mac but has not been scripted out with a portable Mar
 
 * 2GB RAM (in order to run both server and client)
 
-* Jave 8 (JDK 1.8) or newer (Preferably OpenJDK - <a href="https://adoptopenjdk.net">https://adoptopenjdk.net</a>)
+* Java 8 (JDK 1.8) or newer (Preferably OpenJDK - <a href="https://adoptopenjdk.net">https://adoptopenjdk.net</a>)
 
 [Return to top](#top)
 
