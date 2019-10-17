@@ -1,5 +1,5 @@
 @echo off
-:# Open RSC: A replica RSC private server framework
+:# Open RSC: Striving for a replica RSC game and more
 
 :# Variable paths:
 SET required="Required\"
@@ -13,18 +13,18 @@ echo:
 echo What would you like to do?
 echo:
 echo Choices:
-echo   %RED%1%NC% - Run Game
-echo   %RED%2%NC% - Rank a player
-echo   %RED%3%NC% - Backup database
-echo   %RED%4%NC% - Restore database
-echo   %RED%5%NC% - Reset entire database
+echo   %RED%1%NC% - Start the game
+echo   %RED%2%NC% - Change a player's in-game role
+echo   %RED%3%NC% - Backup game database
+echo   %RED%4%NC% - Restore game database
+echo   %RED%5%NC% - Reset entire game database
 echo   %RED%6%NC% - Exit
 echo:
 SET /P action=Please enter a number choice from above:
 echo:
 
 if /i "%action%"=="1" goto run
-if /i "%action%"=="2" goto rank
+if /i "%action%"=="2" goto role
 if /i "%action%"=="3" goto backup
 if /i "%action%"=="4" goto import
 if /i "%action%"=="5" goto reset
@@ -57,11 +57,11 @@ goto start
 :<------------End Run------------>
 
 
-:<------------Begin Rank------------>
-:rank
+:<------------Begin Role------------>
+:role
 cls
 echo:
-echo What would you like rank a player as?
+echo What would role should the player be set to?
 echo:
 echo Choices:
 echo   %RED%1%NC% - Admin
@@ -69,17 +69,17 @@ echo   %RED%2%NC% - Mod
 echo   %RED%3%NC% - Regular Player
 echo   %RED%4%NC% - Return
 echo:
-SET /P rank=Please enter a number choice from above:
+SET /P role=Please enter a number choice from above:
 echo:
 
-if /i "%rank%"=="1" goto admin
-if /i "%rank%"=="2" goto mod
-if /i "%rank%"=="3" goto regular
-if /i "%rank%"=="4" goto start
+if /i "%role%"=="1" goto admin
+if /i "%role%"=="2" goto mod
+if /i "%role%"=="3" goto regular
+if /i "%role%"=="4" goto start
 
-echo Error! %rank% is not a valid option. Press enter to try again.
+echo Error! %role% is not a valid option. Press enter to try again.
 echo:
-SET /P rank=""
+SET /P role=""
 goto start
 
 :admin
@@ -138,7 +138,7 @@ echo %username% has been made a regular player!
 echo:
 pause
 goto start
-:<------------End Rank------------>
+:<------------End Role------------>
 
 
 :<------------Begin Backup------------>
@@ -214,7 +214,7 @@ pause
 goto start
 
 :wipe
-REM Starts up the database server and imports both server and player database files to replace anything previousy existing
+REM Starts up the database server and imports both server and player database files to replace anything previously existing
 cls
 echo:
 call START "" %mariadbpath%mysqld.exe --console
@@ -225,16 +225,16 @@ call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE cabbage
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE openpk;"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE preservation;"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE wk;"
-call %mariadbpath%mysql.exe -uroot -proot openrsc < Required\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc < Required\openrsc_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot cabbage < Required\cabbage_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot cabbage < Required\cabbage_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot openpk < Required\openpk_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openpk < Required\openpk_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Required\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Required\openrsc_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot wk < Required\wk_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot wk < Required\wk_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot openpk < Databases\openpk_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openpk < Databases\openpk_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot wk < Databases\wk_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot wk < Databases\wk_game_players.sql
 echo:
 echo The databases have all been reset to the original versions!
 echo:
@@ -273,7 +273,7 @@ cd Single-Player
 call START "" %mariadbpath%mysqld.exe --console
 echo Database wipe will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc < Required\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc < Databases\openrsc_game_server.sql
 echo:
 echo Upgrade complete.
 echo:

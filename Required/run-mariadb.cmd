@@ -1,5 +1,5 @@
 @echo off
-:# Open RSC: A replica RSC private server framework
+:# Open RSC: Striving for a replica RSC game and more
 
 :# Path variables:
 SET mariadbpath="mariadb10.3.8\bin\"
