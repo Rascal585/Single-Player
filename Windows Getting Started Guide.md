@@ -14,7 +14,7 @@ You are now ready to double click on "Start-Windows.cmd"
 
 Once open, press 1 and then press enter. This is for the option of "Start the game"
 
-A new window will open stating that the game will start up in 10 seconds. When the game client opens, you will need to click "New User" to create a player. If your mouse cursor suddenly becomes locked in place, press the alt key once and then it should be back to normal. The alt key lets you freely move the camera around with the mouse.
+A new window will open stating that the game will start up in 10 seconds. When the game client opens, you will need to click "New User" to create a player.
 
 If you become stuck on Tutorial Island or just wish to skip it, there is a link in the in-game options menu above the log out that reads "skip tutorial".
 
