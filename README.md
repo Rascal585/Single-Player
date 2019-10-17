@@ -17,13 +17,13 @@ Runescape Classic was shut down and abandoned after 17 years on August 6th, 2018
 
 2. Unzip the file
 
-3. Open the "Single-Player" folder and double click on "Start-Windows.cmd" or if using Linux, execute "Start-Linux.sh". If running Apple MacOS, first read the <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.txt">"MacOS Getting Started Guide"</a> and if using a Raspberry Pi 3b+ or newer, please refer to the <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Raspberry%20Pi%20Getting%20Started%20Guide%20.md">Raspberry Pi Getting Started Guide</a>
+3. Open the "Single-Player" folder and double click on "Start-Windows.cmd" as well as read the <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Windows%20Getting%20Started%20Guide.md">Windows Getting Started Guide</a> or if using Linux, execute "Start-Linux.sh". If running Apple MacOS, first read the <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.md">"MacOS Getting Started Guide"</a> and if using a Raspberry Pi 3b+ or newer, please refer to the <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Raspberry%20Pi%20Getting%20Started%20Guide%20.md">Raspberry Pi Getting Started Guide</a>
 
 4. Windows users: allow any MariaDB and Java permissions if prompted by the Windows Firewall
 
 5. For an in-depth getting started guide, check out:
 
-<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Windows%20Getting%20Started%20Guide.txt">Windows Getting Started Guide</a> | <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.txt">MacOS Getting Started Guide</a> | <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Raspberry%20Pi%20Getting%20Started%20Guide%20.md">Raspberry Pi Getting Started Guide</a>
+<a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Windows%20Getting%20Started%20Guide.md">Windows Getting Started Guide</a> | <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.md">MacOS Getting Started Guide</a> | <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Raspberry%20Pi%20Getting%20Started%20Guide%20.md">Raspberry Pi Getting Started Guide</a>
 
 Feel free to join our Discord if you need help: <a href="https://discord.gg/KGvudZ9">https://discord.gg/KGvudZ9</a>
 
