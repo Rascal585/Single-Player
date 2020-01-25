@@ -95,8 +95,6 @@ echo Player update will occur in 5 seconds (gives time to start the database ser
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openpk; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made an admin!
 echo:
@@ -114,8 +112,6 @@ echo Player update will occur in 5 seconds (gives time to start the database ser
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openpk; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made a mod!
 echo:
@@ -133,8 +129,6 @@ echo Player update will occur in 5 seconds (gives time to start the database ser
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openpk; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made a regular player!
 echo:
@@ -155,11 +149,8 @@ echo What do you want to name your player database backup? (Avoid spaces and sym
 echo:
 SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
-call START "" %mariadbpath%mysqldump.exe -uroot -proot --database preservation --result-file="Backups/%filename%-RSC-Preservation.sql"
 call START "" %mariadbpath%mysqldump.exe -uroot -proot --database openrsc --result-file="Backups/%filename%-OpenRSC.sql"
 call START "" %mariadbpath%mysqldump.exe -uroot -proot --database cabbage --result-file="Backups/%filename%-RSC-Cabbage.sql"
-call START "" %mariadbpath%mysqldump.exe -uroot -proot --database openpk --result-file="Backups/%filename%-Open-PK.sql"
-call START "" %mariadbpath%mysqldump.exe -uroot -proot --database wk --result-file="Backups/%filename%-Wolf-Kingdom.sql"
 echo:
 echo Player database backup complete.
 echo:
@@ -182,11 +173,8 @@ echo Which player database listed above do you wish to restore? (Just specify th
 echo:
 SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
-call %mariadbpath%mysql.exe -uroot -proot preservation < "Backups/%filename%-RSC-Preservation.sql"
 call %mariadbpath%mysql.exe -uroot -proot openrsc < "Backups/%filename%-OpenRSC.sql"
 call %mariadbpath%mysql.exe -uroot -proot cabbage < "Backups/%filename%-RSC-Cabbage.sql"
-call %mariadbpath%mysql.exe -uroot -proot openpk < "Backups/%filename%-Open-PK.sql"
-call %mariadbpath%mysql.exe -uroot -proot openrsc < "Backups/%filename%-Wolf-Kingdom.sql"
 echo:
 echo Player database restore complete.
 echo:
@@ -213,9 +201,6 @@ echo Database upgrade will occur in 5 seconds (gives time to start the database 
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
 call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openpk < Databases\openpk_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot wk < Databases\wk_game_server.sql
 echo:
 echo Player database upgrade complete.
 echo:
@@ -253,19 +238,10 @@ echo Database wipe will occur in 5 seconds (gives time to start the database ser
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE openrsc;"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE cabbage;"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE openpk;"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE preservation;"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE wk;"
 call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
 call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_players.sql
 call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
 call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot openpk < Databases\openpk_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot openpk < Databases\openpk_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot wk < Databases\wk_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot wk < Databases\wk_game_players.sql
 echo:
 echo The databases have all been reset to the original versions!
 echo:
