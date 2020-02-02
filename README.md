@@ -13,19 +13,19 @@ Runescape Classic was shut down and abandoned after 17 years on August 6th, 2018
 
 ## How to Run Single Player Open RSC<a name="run"></a>
 
-1. #### <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/tags">Download the latest release</a>
+1. #### <a href="https://orsc.dev/open-rsc/Single-Player/tags">Download the latest release</a>
 
 2. Unzip the contents.
 
 3. Pick from the following:
 
-- Microsoft Windows: double click on "Start-Windows.cmd" as well as read the <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Windows%20Getting%20Started%20Guide.md">Windows Getting Started Guide.</a> Allow any MariaDB and Java permissions if prompted by the Windows Firewall.
+- Microsoft Windows: double click on "Start-Windows.cmd" as well as read the <a href="https://orsc.dev/open-rsc/Single-Player/blob/master/Windows%20Getting%20Started%20Guide.md">Windows Getting Started Guide.</a> Allow any MariaDB and Java permissions if prompted by the Windows Firewall.
 
 - Ubuntu and CentOS Linux: execute "Start-Linux.sh".
 
-- Raspberry Pi 3b+ or newer: refer to the <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/Raspberry%20Pi%20Getting%20Started%20Guide%20.md">Raspberry Pi Getting Started Guide.</a>
+- Raspberry Pi 3b+ or newer: refer to the <a href="https://orsc.dev/open-rsc/Single-Player/blob/master/Raspberry%20Pi%20Getting%20Started%20Guide%20.md">Raspberry Pi Getting Started Guide.</a>
 
-- Apple MacOS: first read the <a href="https://gitlab.openrsc.com/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.md">"MacOS Getting Started Guide"</a> before executing "Start-Linux.sh".
+- Apple MacOS: first read the <a href="https://orsc.dev/open-rsc/Single-Player/blob/master/MacOS%20Getting%20Started%20Guide.md">"MacOS Getting Started Guide"</a> before executing "Start-Linux.sh".
 
 Feel free to join our Discord if you need help: <a href="https://discord.gg/KGvudZ9">https://discord.gg/KGvudZ9</a>
 
@@ -46,7 +46,7 @@ Feel free to join our Discord if you need help: <a href="https://discord.gg/KGvu
 ## Bug Reports, Discord, and Reddit<a name="bugs"></a>
 Feel free to submit bug reports in the repository issues section! If you would like to chat with developers and players of this project, join our Discord server!
 
-<a href="https://gitlab.openrsc.com/open-rsc/Game/issues">GitLab Issue Submission</a>
+<a href="https://orsc.dev/open-rsc/Game/issues">GitLab Issue Submission</a>
 
 <a href="https://discordapp.com/invite/94vVKND">Discord</a>
 
