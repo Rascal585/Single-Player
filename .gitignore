@@ -21,3 +21,5 @@ Required/Cache/config\.txt
 *.png
 
 server/logs/gameserver.log
+
+db_check_log.txt
