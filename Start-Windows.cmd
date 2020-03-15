@@ -1,5 +1,5 @@
 @echo off
-:# Open RSC: Striving for a replica RSC game and more
+:# Open RuneScape Classic: Striving for a replica RSC game and more
 
 :# Variable paths:
 SET required="Required\"
@@ -95,6 +95,7 @@ echo Player update will occur in 5 seconds (gives time to start the database ser
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made an admin!
 echo:
@@ -112,6 +113,7 @@ echo Player update will occur in 5 seconds (gives time to start the database ser
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made a mod!
 echo:
@@ -129,6 +131,7 @@ echo Player update will occur in 5 seconds (gives time to start the database ser
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
 echo:
 echo %username% has been made a regular player!
 echo:
@@ -151,6 +154,7 @@ SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
 call START "" %mariadbpath%mysqldump.exe -uroot -proot --database openrsc --result-file="Backups/%filename%-OpenRSC.sql"
 call START "" %mariadbpath%mysqldump.exe -uroot -proot --database cabbage --result-file="Backups/%filename%-RSC-Cabbage.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot -proot --database preservation --result-file="Backups/%filename%-RSC-Preservation.sql"
 echo:
 echo Player database backup complete.
 echo:
@@ -175,6 +179,7 @@ SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
 call %mariadbpath%mysql.exe -uroot -proot openrsc < "Backups/%filename%-OpenRSC.sql"
 call %mariadbpath%mysql.exe -uroot -proot cabbage < "Backups/%filename%-RSC-Cabbage.sql"
+call %mariadbpath%mysql.exe -uroot -proot preservation < "Backups/%filename%-RSC-Preservation.sql"
 echo:
 echo Player database restore complete.
 echo:
@@ -201,6 +206,7 @@ echo Database upgrade will occur in 5 seconds (gives time to start the database 
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
 call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_server.sql
 echo:
 echo Player database upgrade complete.
 echo:
@@ -238,8 +244,11 @@ echo Database wipe will occur in 5 seconds (gives time to start the database ser
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE openrsc;"
 call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE cabbage;"
+call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE preservation;"
 call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
 call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_players.sql
 call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
 call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_players.sql
 echo:
@@ -258,13 +267,13 @@ taskkill /F /IM mysqld*
 
 REM Fetches the most recent release version
 echo:
-call Required\curl -sL https://gitlab.openrsc.com/api/v4/projects/open-rsc%2Fsingle-player/releases | Required\grep "tag_name" | Required\egrep -o (ORSC-).[0-9].[0-9].[0-9] | Required\head -1 > version.txt
+call Required\curl -sL https://orsc.dev/api/v4/projects/open-rsc%2Fsingle-player/releases | Required\grep "tag_name" | Required\egrep -o (ORSC-).[0-9].[0-9].[0-9] | Required\head -1 > version.txt
 set /P version=<version.txt
 echo %version%
 
 REM Downloads the most recent release archive and copies the contents into "Single-Player"
 cd ..
-call Single-Player\Required\wget https://gitlab.openrsc.com/open-rsc/Single-Player/-/archive/%version%/Single-Player-%version%.zip
+call Single-Player\Required\wget https://orsc.dev/open-rsc/Single-Player/-/archive/%version%/Single-Player-%version%.zip
 call Single-Player\Required\7za.exe x Single-Player-%version%.zip -aoa
 cd Single-Player-%version%
 call xcopy "*.*" "../Single-Player\" /K /D /H /Y

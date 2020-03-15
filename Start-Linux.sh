@@ -5,7 +5,7 @@ NC=$(tput sgr0) # No Color
 
 clear
 echo ""
-echo "${RED}Open RSC${NC}
+echo "${RED}Open RuneScape Classic${NC}
 Striving for a replica RSC game and more.
 
 What would you like to do?

@@ -1,15 +1,14 @@
-### Guide for running Open RSC on Windows
+### Guide for running Open RuneScape Classic on Windows
 
 ## Single Player
 
-First, download the latest release of Open RSC Single Player as this is designed for Windows with virtually zero set up required:
+First, download the latest release of Open RuneScape Classic Single Player as this is designed for Windows with virtually zero set up required:
 
 https://orsc.dev/open-rsc/Single-Player/-/releases
 
 ## Installing Java
 
-Download Open JDK 12 for Windows (MSI installer version) and if you already have Java installed (ex: Oracle Java 8), then it is highly suggested that you first uninstall it. Oracle will not be supporting non-enterprise Java much longer and Open JDK is the future.
-<a href="https://cdn.azul.com/zulu/bin/zulu12.2.3-ca-jdk12.0.1-win_x64.msi">https://cdn.azul.com/zulu/bin/zulu12.2.3-ca-jdk12.0.1-win_x64.msi</a>
+- Need the latest Java installed? "zuluXX.XX.X-ca-jreXX.X.X-win_x64.msi" installer has been placed in the folder for you to install if needed.
 
 For the latest version of Open JDK: (pick the MSI installer version!)
 <a href="https://www.azul.com/downloads/zulu/">https://www.azul.com/downloads/zulu/</a>
@@ -39,7 +38,7 @@ If you opt to use different named databases, edit the following line in your "lo
 
 Depending on which configuration is used, your server port may differ. If 43594 is instead now 43595 because "rsccabbage.conf" is being used and you do not wish to edit it any, you will need to go into "Single-Player -> client -> Cache" and edit "port.txt" to reflect the new port being used by the game server.
 
-It is strongly suggested that you do not edit "default.conf" and instead make a copy of whatever .conf file, rename it to "local.conf" and edit that instead. That way, you always have working config to fall back on if something doesn't work the way you wish.
+It is strongly suggested that you do not edit "default.conf" and instead make a copy of whatever .conf file you wish to use, rename it as "local.conf" and edit that instead. That way, you always have working config to fall back on if something doesn't work the way you wish. If "local.conf" exists, it will override whatever is in "default.conf".
 
 Last but not least, always restart the game server after fully exiting it when you have made changes to your "local.conf" in order to have them be applied. An already running server will not read any changes to the file.
 
