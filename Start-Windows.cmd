@@ -206,7 +206,7 @@ echo Database upgrade will occur in 5 seconds (gives time to start the database 
 PING localhost -n 6 >NUL
 call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
 call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\preservation_game_server.sql
 echo:
 echo Player database upgrade complete.
 echo:
@@ -242,15 +242,18 @@ echo:
 call START "" %mariadbpath%mysqld.exe --console
 echo Database wipe will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE openrsc;"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE cabbage;"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "CREATE DATABASE preservation;"
-call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot -e "DROP DATABASE IF EXISTS openrsc;"
+call %mariadbpath%mysql.exe -uroot -proot -e "DROP DATABASE IF EXISTS cabbage;"
+call %mariadbpath%mysql.exe -uroot -proot -e "DROP DATABASE IF EXISTS preservation;"
+call %mariadbpath%mysql.exe -uroot -proot -e "CREATE DATABASE `openrsc`;"
+call %mariadbpath%mysql.exe -uroot -proot -e "CREATE DATABASE `cabbage`;"
+call %mariadbpath%mysql.exe -uroot -proot -e "CREATE DATABASE `preservation`;"
 call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\openrsc_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
 call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\preservation_game_players.sql
+call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\preservation_game_server.sql
 echo:
 echo The databases have all been reset to the original versions!
 echo:
