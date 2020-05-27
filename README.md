@@ -59,6 +59,6 @@ Feel free to submit bug reports in the repository issues section! If you would l
 
 ## In-Game Commands<a name="commands"></a>
 
-#### <a href="https://orsc.dev/open-rsc/Game/blob/~/master/Commands.md">Click here for in-game command documentation.</a>
+#### <a href="https://orsc.dev/open-rsc/Game/blob/-/master/Commands.md">Click here for in-game command documentation.</a>
 
 [Return to top](#top)
