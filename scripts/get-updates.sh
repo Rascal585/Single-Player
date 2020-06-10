@@ -18,42 +18,48 @@ echo ""
 echo "Compiling all code now."
 echo ""
 echo ""
-sudo make compile
+ant -f server/build.xml compile_core
+ant -f server/build.xml compile_plugins
+ant -f Client_Base/build.xml compile
+ant -f PC_Launcher/build.xml compile
+#gradle -b Android_Client/Open\ RSC\ Android\ Client/build.gradle assembleDebug
 
 # Launcher
 echo ""
-echo "Compiling for development or production use?
+echo "Copy and md5sum compiled client and cache files to the Website downloads folder?
 
 Choices:
-  ${RED}1${NC} - Development
-  ${RED}2${NC} - Production"
+  ${RED}1${NC} - No
+  ${RED}2${NC} - Yes"
 echo ""
 echo "Type the choice number and press enter."
 echo ""
 read -r compiling
 
 if [ "$compiling" == "1" ]; then
-  echo ""
+    echo ""
 elif [ "$compiling" == "2" ]; then
-  # Client
-  yes | sudo cp -rf client/*.jar ../Website/downloads/
-  sudo chmod +x ../Website/downloads/*.jar
-  sudo chmod 777 ../Website/downloads/*.jar
+    # PC Client
+    yes | sudo cp -f Client_Base/*.jar ../Website/site/public/downloads/
 
-  # Launcher
-  yes | sudo cp -rf Launcher/*.jar ../Website/downloads/
-  sudo chmod +x ../Website/downloads/*.jar
-  sudo chmod 777 ../Website/downloads/*.jar
+    # Android client
+    #yes | sudo cp -f Android_Client/Open\ RSC\ Android\ Client/*.apk ../Website/site/public/downloads/
 
-  # Cache
-  yes | sudo cp -a -rf "client/Cache/." "../Website/downloads/"
-  sudo rm ../Website/downloads/MD5CHECKSUM
-  sudo touch ../Website/downloads/MD5CHECKSUM && sudo chmod 777 ../Website/downloads/MD5CHECKSUM
-  md5sum ../Website/downloads/* | sed 's/Website\/downloads\///g' | grep "^[a-zA-Z0-9]*" | awk '{print $2"="$1}' | tee ../Website/downloads/MD5CHECKSUM
-  sudo sed -i 's/MD5CHECKSUM=/#MD5CHECKSUM=/g' "../Website/downloads/MD5CHECKSUM" # disables a bad line
-  sudo sed -i 's/index=/#index=/g' "../Website/downloads/MD5CHECKSUM" # disables a bad line
-  sudo sed -i 's/OpenRSC=/#OpenRSC=/g' "../Website/downloads/MD5CHECKSUM" # disables a bad line
-  sudo sed -i 's/..\///g' "../Website/downloads/MD5CHECKSUM" # Removes ../
+    # Launcher
+    yes | sudo cp -rf PC_Launcher/*.jar ../Website/site/public/downloads/
+
+    # Set file permissions within the Website downloads folder
+    sudo chmod +x ../Website/site/public/downloads/*.jar
+    sudo chmod +x ../Website/site/public/downloads/*.jar
+    sudo chmod -R 777 ../Website/site/public/downloads
+
+    # Cache copy and file permissions
+    sudo chmod 777 -R 'Client_Base/Cache'                                                       # Normal cache related files
+    yes | sudo cp -a -rf "Client_Base/Cache/." "../Website/site/public/downloads/"                          # Normal cache related files
+
+    cd '../Website/site/public/downloads/' || exit
+    find -type f \( -not -name "MD5.SUM" \) -exec md5sum '{}' \; >MD5.SUM # Performs md5 hashing of all files in cache and writes to a text file for the launcher to read
+    cd '../../../../Game' || exit
 fi
 
 clear
@@ -71,7 +77,7 @@ echo ""
 read -r finished
 
 if [ "$finished" == "1" ]; then
-  make run-server
+    make run-server
 elif [ "$finished" == "2" ]; then
-  make start-linux
+    make start-linux
 fi

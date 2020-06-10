@@ -3,7 +3,7 @@
 
 :# Variable paths:
 SET required="Required\"
-SET mariadbpath="Required\mariadb10.3.8\bin\"
+SET mariadbpath="Required\mariadb-10.5.3-winx64\bin\"
 
 :<------------Begin Start------------>
 REM Initial menu displayed to the user
@@ -93,9 +93,9 @@ SET /P username=""
 call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '0' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -D openrsc -e "USE openrsc; UPDATE `players` SET `group_id` = '0' WHERE `players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -D openrsc -e "USE cabbage; UPDATE `players` SET `group_id` = '0' WHERE `players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -D openrsc -e "USE preservation; UPDATE `players` SET `group_id` = '0' WHERE `players`.`username` = '%username%';"
 echo:
 echo %username% has been made an admin!
 echo:
@@ -111,9 +111,9 @@ SET /P username=""
 call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '2' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -D openrsc -e "USE openrsc; UPDATE `players` SET `group_id` = '2' WHERE `players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -D openrsc -e "USE cabbage; UPDATE `players` SET `group_id` = '2' WHERE `players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -D openrsc -e "USE preservation; UPDATE `players` SET `group_id` = '2' WHERE `players`.`username` = '%username%';"
 echo:
 echo %username% has been made a mod!
 echo:
@@ -129,9 +129,9 @@ SET /P username=""
 call START "" %mariadbpath%mysqld.exe --console
 echo Player update will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE openrsc; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE cabbage; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc -e "USE preservation; UPDATE `openrsc_players` SET `group_id` = '10' WHERE `openrsc_players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -D openrsc -e "USE openrsc; UPDATE `players` SET `group_id` = '10' WHERE `players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -D openrsc -e "USE cabbage; UPDATE `players` SET `group_id` = '10' WHERE `players`.`username` = '%username%';"
+call %mariadbpath%mysql.exe -uroot -D openrsc -e "USE preservation; UPDATE `players` SET `group_id` = '10' WHERE `players`.`username` = '%username%';"
 echo:
 echo %username% has been made a regular player!
 echo:
@@ -152,9 +152,9 @@ echo What do you want to name your player database backup? (Avoid spaces and sym
 echo:
 SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
-call START "" %mariadbpath%mysqldump.exe -uroot -proot --database openrsc --result-file="Backups/%filename%-OpenRSC.sql"
-call START "" %mariadbpath%mysqldump.exe -uroot -proot --database cabbage --result-file="Backups/%filename%-RSC-Cabbage.sql"
-call START "" %mariadbpath%mysqldump.exe -uroot -proot --database preservation --result-file="Backups/%filename%-RSC-Preservation.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot --database openrsc --result-file="Backups/%filename%-OpenRSC.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot --database cabbage --result-file="Backups/%filename%-RSC-Cabbage.sql"
+call START "" %mariadbpath%mysqldump.exe -uroot --database preservation --result-file="Backups/%filename%-RSC-Preservation.sql"
 echo:
 echo Player database backup complete.
 echo:
@@ -177,9 +177,9 @@ echo Which player database listed above do you wish to restore? (Just specify th
 echo:
 SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
-call %mariadbpath%mysql.exe -uroot -proot openrsc < "Backups/%filename%-OpenRSC.sql"
-call %mariadbpath%mysql.exe -uroot -proot cabbage < "Backups/%filename%-RSC-Cabbage.sql"
-call %mariadbpath%mysql.exe -uroot -proot preservation < "Backups/%filename%-RSC-Preservation.sql"
+call %mariadbpath%mysql.exe -uroot openrsc < "Backups/%filename%-OpenRSC.sql"
+call %mariadbpath%mysql.exe -uroot cabbage < "Backups/%filename%-RSC-Cabbage.sql"
+call %mariadbpath%mysql.exe -uroot preservation < "Backups/%filename%-RSC-Preservation.sql"
 echo:
 echo Player database restore complete.
 echo:
@@ -204,9 +204,9 @@ SET /P filename=""
 call START "" %mariadbpath%mysqld.exe --console
 echo Database upgrade will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\preservation_game_server.sql
+call %mariadbpath%mysql.exe -uroot openrsc < Databases\game_server.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases\cabbage_game_server.sql
+call %mariadbpath%mysql.exe -uroot preservation < Databases\preservation_game_server.sql
 echo:
 echo Player database upgrade complete.
 echo:
@@ -242,18 +242,26 @@ echo:
 call START "" %mariadbpath%mysqld.exe --console
 echo Database wipe will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -e "DROP DATABASE IF EXISTS openrsc;"
-call %mariadbpath%mysql.exe -uroot -proot -e "DROP DATABASE IF EXISTS cabbage;"
-call %mariadbpath%mysql.exe -uroot -proot -e "DROP DATABASE IF EXISTS preservation;"
-call %mariadbpath%mysql.exe -uroot -proot -e "CREATE DATABASE `openrsc`;"
-call %mariadbpath%mysql.exe -uroot -proot -e "CREATE DATABASE `cabbage`;"
-call %mariadbpath%mysql.exe -uroot -proot -e "CREATE DATABASE `preservation`;"
-call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot openrsc < Databases\openrsc_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot cabbage < Databases\cabbage_game_server.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\preservation_game_players.sql
-call %mariadbpath%mysql.exe -uroot -proot preservation < Databases\preservation_game_server.sql
+call %mariadbpath%mysql.exe -uroot -e "DROP DATABASE IF EXISTS openrsc;"
+call %mariadbpath%mysql.exe -uroot -e "DROP DATABASE IF EXISTS cabbage;"
+call %mariadbpath%mysql.exe -uroot -e "DROP DATABASE IF EXISTS preservation;"
+call %mariadbpath%mysql.exe -uroot -e "CREATE DATABASE `openrsc`;"
+call %mariadbpath%mysql.exe -uroot -e "CREATE DATABASE `cabbage`;"
+call %mariadbpath%mysql.exe -uroot -e "CREATE DATABASE `preservation`;"
+call %mariadbpath%mysql.exe -uroot openrsc < Databases\core.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases\core.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_auctionhouse.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_bank_presets.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_clans.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_custom_items.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_custom_npcs.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_custom_objects.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_equipment_tab.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_harvesting.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_ironman.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_npc_kill_counting.sql
+call %mariadbpath%mysql.exe -uroot cabbage < Databases/Addons/add_runecraft.sql
+call %mariadbpath%mysql.exe -uroot preservation < Databases\core.sql
 echo:
 echo The databases have all been reset to the original versions!
 echo:
@@ -292,7 +300,7 @@ cd Single-Player
 call START "" %mariadbpath%mysqld.exe --console
 echo Database wipe will occur in 5 seconds (gives time to start the database server on slow PCs)
 PING localhost -n 6 >NUL
-call %mariadbpath%mysql.exe -uroot -proot -D openrsc < Databases\openrsc_game_server.sql
+call %mariadbpath%mysql.exe -uroot -D openrsc < Databases\core.sql
 echo:
 echo Upgrade complete.
 echo:
